@@ -1,0 +1,3 @@
+import Link from "next/link";
+export function Header(){return <header className="site-header"><div className="container header-inner"><Link href="/" className="brand"><span className="brand-mark">CR</span><span><strong>Compras</strong> Rápidas<small>Encontre boas escolhas.</small></span></Link><nav className="nav"><Link href="/#ofertas">Ofertas</Link><Link href="/#categorias">Categorias</Link><Link href="/conta">Minha conta</Link><Link href="/admin">Área Admin</Link></nav></div></header>}
+export function Footer(){return <footer className="footer"><div className="container"><strong>Compras Rápidas</strong><p>Encontre boas escolhas.</p></div></footer>}

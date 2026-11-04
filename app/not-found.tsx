@@ -1,0 +1,1 @@
+import Link from "next/link"; export default function NotFound(){return <main className="form-shell"><div className="form-card"><h1>Página não encontrada</h1><p>Esta escolha não está disponível.</p><Link className="button" href="/">Voltar à vitrine</Link></div></main>}

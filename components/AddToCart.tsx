@@ -1,0 +1,3 @@
+"use client";
+import { useState } from "react"; import Link from "next/link"; import type { Product } from "@/types";
+export default function AddToCart({product}:{product:Product}){const [added,setAdded]=useState(false);function add(){const current=JSON.parse(localStorage.getItem('cr_cart')||'[]');const found=current.find((x:any)=>x.id===product.id);if(found)found.quantity+=1;else current.push({id:product.id,title:product.title,price:product.price,image_url:product.image_url,affiliate_url:product.affiliate_url,quantity:1});localStorage.setItem('cr_cart',JSON.stringify(current));setAdded(true)}return added?<Link className="button" href="/carrinho">Ir para o carrinho</Link>:<button className="button" onClick={add}>Adicionar ao carrinho</button>}

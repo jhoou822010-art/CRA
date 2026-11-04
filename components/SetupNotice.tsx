@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function SetupNotice({ title="Configure o Supabase para continuar" }: { title?: string }) { return <main className="form-shell"><div className="form-card"><span className="brand-mark">CR</span><h1>{title}</h1><p>Copie <code>.env.example</code> para <code>.env.local</code>, preencha as chaves do Supabase e reinicie o servidor.</p><Link className="button" href="/">Voltar para a vitrine</Link></div></main>; }
