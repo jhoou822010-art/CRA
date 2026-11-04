@@ -1,8 +1,35 @@
-Linting and checking validity of types ...
-Failed to compile.
-./app/carrinho/page.tsx:2:150
-Type error: Cannot find module '@/types' or its corresponding type declarations.
-  1 | "use client";
-> 2 | import { useEffect,useState } from "react"; import Link from "next/link"; import { Header } from "@/components/Shell"; import type { CartItem } from "@/types";
-    |                                                                                                                                                      ^
-  3 | export default function Cart(){const [items,setItems]=useState<CartItem[]>([]);useEffect(()=>setItems(JSON.parse(localStorage.getItem('cr_cart')||'[]')),[]);function save(next:CartItem[]){setItems(next);localStorage.setItem('cr_cart',JSON.stringify(next))}const total=items.reduce((sum,i)=>sum+i.price*i.quantity,0);return <><Header/><main className="container section"><span className="eyebrow">Sua seleção</span><h1>Carrinho</h1>{!items.length?<div className="empty">Seu carrinho está vazio. <Link href="/">Voltar à vitrine</Link></div>:<><div className="admin-card">{items.map(i=><div className="admin-row" key={i.id}><span>{i.title}</span><span>R$ {i.price.toFixed(2).replace('.',',')}</span><input aria-label={Quantidade de ${i.title}} type="number" min="1" value={i.quantity} onChange={e=>save(items.map(x=>x.id===i.id?{...x,quantity:Number(e.target.value)}:x))}/><button className="button outline" onClick={()=>save(items.filter(x=>x.id!==i.id))}>Remover</button></div>)}</div><h2 style={{marginTop:24}}>Total: R$ {total.toFixed(2).replace('.',',')}</h2><Link className="button" href="/checkout">Continuar para checkout</Link></>}</main></>}
+export type Product = {
+  id: string;
+  title: string;
+  slug: string;
+  description: string;
+  price: number;
+  compare_at_price: number | null;
+  affiliate_url: string;
+  image_url: string;
+  gallery: string[];
+  videos: string[];
+  badge: string | null;
+  is_active: boolean;
+  is_featured: boolean;
+  is_offer: boolean;
+  is_new: boolean;
+  category_id: string | null;
+  categories?: {
+    name: string;
+    slug: string;
+  } | null;
+  stores?: {
+    name: string;
+    logo_url: string | null;
+  } | null;
+};
+
+export type CartItem = {
+  id: Product["id"];
+  title: Product["title"];
+  price: Product["price"];
+  image_url: Product["image_url"];
+  affiliate_url: Product["affiliate_url"];
+  quantity: number;
+};
