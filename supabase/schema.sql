@@ -35,4 +35,4 @@ drop policy if exists "admin media update" on storage.objects; create policy "ad
 drop policy if exists "admin media delete" on storage.objects; create policy "admin media delete" on storage.objects for delete using(bucket_id='product-media' and public.is_admin());
 
 -- Primeiro administrador: crie o usuário em Authentication > Users e execute:
--- update public.perfis set role='admin' where id=(select id from auth.users where email='melojonatha037@gmail.com');
+-- update public.perfis set role='admin' where id=(select id from auth.users where email='3baf4571-718d-41dc-ad80-a14af8f959c5');
